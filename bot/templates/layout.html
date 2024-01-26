@@ -1,0 +1,43 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<div>
+    {% if user.is_authenticated %}
+        Signed in as <strong>{{ user.username }}</strong>.
+    {% else %}
+        Not signed in.
+    {% endif %}
+</div>
+
+
+{% if user.is_authenticated %}
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+</li>                
+
+
+{% else %}
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">Log In</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+{% endif %}
+
+
+{% block body %}
+{% endblock %}
+
+    
+
+
+</body>
+</html>
+
